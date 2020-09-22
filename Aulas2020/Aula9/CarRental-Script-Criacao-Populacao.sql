@@ -118,9 +118,9 @@ select *, return_date - rental_date as n_daily from rentals; -- Mostra os alugé
 select * from vw_cars;
 select * from vw_customers;
 select * from rentals;
-select * from view vw_rentals;
+select * from vw_rentals;
 
-
+-- Desafio, tente criar uma Query e depois uma VIEW que calcule o valor final (finale_value).
 
 
 
