@@ -50,10 +50,16 @@ alter table rentals add constraint fk_customer_rentals foreign key (cpf) referen
 alter table rentals add constraint fk_cars_rentals foreign key (plate) references cars(plate) on update cascade;
 
 -- Criando as visões
+create view vw_renteds as
+select plate, "Alugado" as status from rentals where return_date is null;
+
 create view vw_cars as
-select c.plate, c.model, c.brand, c.color, c.picture, c.year, c.kind, p.daily
+select c.plate, c.model, c.brand, c.color, c.picture, c.year, c.kind, p.daily, 
+case when r.status is null then "Disponível" else r.status end as status
 from cars c inner join prices p
-on c.kind like p.kind;
+on c.kind like p.kind
+left join vw_renteds r
+on c.plate = r.plate;
 
 create view vw_customers as
 select c.cpf, c.name, c.picture, c.email, f.phone 
@@ -119,6 +125,8 @@ select * from vw_cars;
 select * from vw_customers;
 select * from rentals;
 select * from vw_rentals;
+show tables;
+
 
 -- Desafio, tente criar uma Query e depois uma VIEW que calcule o valor final (finale_value).
 
