@@ -1,7 +1,13 @@
-﻿-- Sctript SQL de Criação (DDL) e população (DML) do Banco de dados
+-- Sctript SQL de Criação (DDL) e população (DML) do Banco de dados
 drop database if exists carRental;
 create database carRental;
 use carRental;
+-- Criação das tabelas
+create table prices(
+    kind varchar(14) not null,
+    daily decimal(6,2) not null 
+);
+
 create table cars(
     plate varchar(7) primary key not null,
     model varchar(30) not null,
@@ -10,11 +16,6 @@ create table cars(
     picture mediumblob,
     year integer(4) not null,
     kind varchar(14) not null
-);
-
-create table prices(
-    kind varchar(14) not null,
-    daily decimal(6,2) not null 
 );
 
 create table customers(
@@ -27,10 +28,7 @@ create table customers(
 -- Esta tabela foi criada para que o cliente possa cadastrar mais de 1 telefone (Atributo Multivalorado)
 create table phones(
     cpf varchar(11) not null,
-    phone varchar(11) not null,
-    constraint fk_customer_phones
-    foreign key (cpf) references customers(cpf)
-    on delete cascade on update cascade
+    phone varchar(11) not null
 );
 
 create table rentals(
@@ -40,11 +38,18 @@ create table rentals(
     rental_date date not null,
     return_date date,
     obs varchar(256),
-    final_value decimal(7,2),
-    constraint fk_customer_rentals foreign key (cpf) references customers(cpf) on update cascade,
-    constraint fk_cars_rentals foreign key (plate) references cars(plate) on update cascade
+    final_value decimal(7,2)
 );
 
+--Relacionamentos
+-- Configura o kind (tipo) como chave primária na tabela prices e relaciona com a tabela cars
+alter table prices modify column kind varchar(14) not null primary key;
+alter table cars add constraint fk_cars_prices foreign key (kind) references prices(kind) on update cascade;
+alter table phones add constraint fk_customer_phones foreign key (cpf) references customers(cpf) on delete cascade on update cascade;
+alter table rentals add constraint fk_customer_rentals foreign key (cpf) references customers(cpf) on update cascade;
+alter table rentals add constraint fk_cars_rentals foreign key (plate) references cars(plate) on update cascade;
+
+-- Criando as visões
 create view vw_cars as
 select c.plate, c.model, c.brand, c.color, c.picture, c.year, c.kind, p.daily
 from cars c inner join prices p
@@ -54,6 +59,11 @@ create view vw_customers as
 select c.cpf, c.name, c.picture, c.email, f.phone 
 from customers c inner join phones f
 on c.cpf like f.cpf;
+
+create view vw_rentals as
+select *,
+CASE WHEN return_date is null THEN curdate() - rental_date ELSE return_date - rental_date END
+as n_daily from rentals;
 
 -- (DML) População do banco de dados com DADOS
 insert into prices values
@@ -104,10 +114,14 @@ select * from cars inner join prices; -- Todos os carros e preços combinados
 select * from prices where daily > 100; -- Somente os preços acima de 100 reais
 select * from cars where plate like "AAA%"; -- Filtra somente os carros com placa iniciada com AAA
 select * from cars inner join prices on cars.kind like prices.kind; -- Junta as duas tabelas e filtra pelo tipo (kind)
+select *, return_date - rental_date as n_daily from rentals; -- Mostra os alugéns e calcula o  número de diárias;
 select * from vw_cars;
 select * from vw_customers;
 select * from rentals;
+select * from view vw_rentals;
 
--- Exercutar o script de dentro do Gerenciador de Banco de Dados
-source D:\ARQUIVOS\SENAI\Planos_Ensino\2020_2_Semestre\BD\Aulas2020\Aula8\carRental.sql
--- Remova esta linha do script, senão você terá um laço infinito (loop)
+
+
+
+
+
