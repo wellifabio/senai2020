@@ -27,7 +27,7 @@ create table order_items(
     unit_value decimal(8,2) not null,
     constraint fk_items_orders foreign key (n_order) references orders(n_order) on delete cascade,
     constraint fk_items_products foreign key (id_prod) references products(id_prod),
-    primary key (n_order,id_prod)
+    primary key (n_order,id_prod) -- Chave primaria MULTIPLA
 );
 -- A tabela ítens serve apenas para ligar produtos a pedidos, não necessita de chave primária
 -- somente das duas chaves estrangeiras que ligam as outras duas tabelas.
