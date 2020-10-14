@@ -94,9 +94,10 @@ on  o.n_order = i.n_order
 inner join products p
 on i.id_prod = p.id_prod;
 
+-- Queries
 select * from products;
 select * from orders;
 select * from order_items;
 select * from vw_orders;
 show tables;
-
+select id_prod,name,quantity from products;

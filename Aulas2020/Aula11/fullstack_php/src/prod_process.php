@@ -1,11 +1,6 @@
 <?php
-//Recebendo a imagem
-$imagem = null;
-if (empty($_FILES["picture"])) {
-    echo "Não recebida imagem<br>";
-} else {
-    $imagem = $_FILES["picture"];
-}
+//Exemplo com programação estrutural, Esta classe funciona como um Controller MVC
+//Comportamento de CREATE em um CRUD
 //Preparando a conexão com o Banco de dados
 $host = "localhost";
 $username = "root";
@@ -13,15 +8,13 @@ $password = "";
 $db = "orders";
 
 if (empty($_POST)) {
-    echo "Não recebi nada, aguardando requisição pelo verbo POST";
+    echo "Aguardando requisição pelo verbo POST";
 } else {
-    //Recebendo e exibindo os dados de texto
+    //Recebendo os dados de texto
     $name = $_POST["name"];
     $quantity = $_POST["quantity"];
-    echo "Nome do produto: " . $name . "<br>";
-    echo "Quantidade: " . $quantity . "<br>";
-
-    if ($imagem != null) { //Se receber a imagem
+    $imagem = $_FILES["picture"];
+    if ($imagem["type"] != null) { //Se recebeu um arquivo de imagem
         $tipoArquivo = explode("/", $imagem["type"])[1]; //Obtem o tipo de arquivo
         $nomeArquivo = time() . "." . $tipoArquivo; //Manta o nome do arquivo pegando a hora do sistema e o tipo do arquivo
         echo "Nome do arquivo: " . $nomeArquivo; //Mostra na tela o nome do arquivo
@@ -35,7 +28,9 @@ if (empty($_POST)) {
             mysqli_close($connection); //Fecha a conexão com o Banco de dados
             unlink($nomeArquivo); //Remove o arquivo temporário de imagem do diretório
         } else {
-            echo "Erro ao enviar imagem para o BD";
+            echo "Erro ao enviar imagem para o BD.";
         }
+    } else {
+        header("location:http://127.0.0.1:5500/prod_front.html");
     }
 }
