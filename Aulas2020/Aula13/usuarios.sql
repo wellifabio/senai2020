@@ -20,11 +20,6 @@ create table usuarios(
 	references pessoas(id_pessoa)
 );
 
-describe pessoas;
-describe telefones;
-describe usuarios;
-show tables;
-
 insert into pessoas(nome) values
 ("Leonardo"),
 ("Rodolpho"),
@@ -48,7 +43,13 @@ from pessoas p inner join telefones t
 on p.id_pessoa = t.id_pessoa;
 
 -- Mostra a tabela da esquerda (pessoas) completa
+create view vw_pessoas as
 select p.id_pessoa, p.nome, t.telefone
 from pessoas p left join telefones t
 on p.id_pessoa = t.id_pessoa;
 
+describe pessoas;
+describe telefones;
+describe usuarios;
+show tables;
+select * from vw_pessoas;
