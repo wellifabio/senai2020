@@ -1,10 +1,19 @@
 <?php
     require("../domain/pessoa.php");
 	header("Content-type: application/json");
-	
 	$pd = new PessoaDAO();
-	$pessoas = 	$pd->readAll();
-	echo json_encode($pessoas);
+
+	if(!empty($_GET)){
+		echo json_encode($pd->readAll());
+	}
+	
+	if(!empty($_POST)){
+		$pessoa = new Pessoa();
+		$pessoa->setNome($_POST["nome"]);
+		$pessoa->setTelefone($_POST["telefone"]);
+		echo json_encode($pd->create($pessoa));
+	}
+	
 ?>
 	
 

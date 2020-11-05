@@ -28,19 +28,18 @@
 	}
 	
 	class PessoaDAO{
-		
-		function create(){
+		function create($pessoa){
 			$resultado = array();
             $query = "INSERT INTO pessoas VALUES (default,'".$pessoa->getNome()."')";
             try{
                 $con = new Conexao();
-                if(Conexao::getInstance()->exec($query) >= 1){
-                    $resultado["id"] = Conexao::getInstance()->lastInsertId();
+                if(Conexao::getInstancia()->exec($query) >= 1){
+                    $resultado["id"] = Conexao::getInstancia()->lastInsertId();
                     $resultado["nome"] = $pessoa->getNome();
                     if($pessoa->getTelefone()!=null){
                         $resultado["telefone"] = $pessoa->getTelefone();
                         $query = "INSERT INTO telefones VALUES (".$resultado["id"].",'".$resultado["telefone"]."')";
-                        Conexao::getInstance()->exec($query);
+                        Conexao::getInstancia()->exec($query);
                     }
                 }
                 $con = null;
