@@ -9,4 +9,3 @@ git clone https://github.com/wellifabio/bancodedados
 git add .
 git commit -m "Mensagem sobre o commit"
 git push
-Link MSEP https://aluno2020.questionpro.com
