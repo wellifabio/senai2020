@@ -9,7 +9,7 @@
 			$senha = "";
 			$config = array(PDO::ATTR_PERSISTENT => true,PDO::ATTR_CASE => PDO::CASE_LOWER);
 			if (!isset(self::$instancia)) {
-				self::$instancia = new PDO($url, $user,$senha,$config); 
+				self::$instancia = new PDO($url, $usuario,$senha,$config); 
 				self::$instancia->setAttribute(PDO::ATTR_ORACLE_NULLS, PDO::NULL_EMPTY_STRING);
 			}
 			return self::$instancia;
