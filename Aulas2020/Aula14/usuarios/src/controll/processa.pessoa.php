@@ -2,17 +2,8 @@
     require("../domain/pessoa.php"); //Funciona como import do JAVA requer o arquivo de modelo "pessoa.php"
 	header("Content-type: application/json"); //Configura a resposta no formato universal JSON
 	$pd = new PessoaDAO(); //Objeto da classe PessoaDAO para acesso ao Banco de Dados
-
-	//No PHP somente as constantes $_GET e $_POST já existem por padrão
-	//Os vetores/constantes DELETE e PUT precisam ser criados 
-	$_DELETE = array();
-	$_PUT = array();
-	if (!strcasecmp($_SERVER['REQUEST_METHOD'], 'DELETE')) {
-		parse_str(file_get_contents('php://input'), $_DELETE);
-	}
-	if (!strcasecmp($_SERVER['REQUEST_METHOD'], 'PUT')) {
-		parse_str(file_get_contents('php://input'), $_PUT);
-	}
+	
+	include("putdel.php"); //Inclui as variáveis de ambiente $_PUT e $_DELETE
 	
 	//Tratar as requisições HTTP REST (GET,POST,PUT,DELETE)
 	if(!empty($_GET)){ //Se o verbo GET não estiver vazio
