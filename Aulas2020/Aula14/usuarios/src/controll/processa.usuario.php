@@ -20,12 +20,19 @@
 	}
 	
 	if(!empty($_POST)){ //Se o verbo POST não estiver vazio
-		$usuario = new Usuario();//Cria um novo objeto Pessoa (modelo)
-		$usuario->setIdPessoa($_POST["id"]);//Preenche o modelo
-		$usuario->setLogin($_POST["login"]);//Preenche o modelo
-		$usuario->setSenha($_POST["senha"]);//Preenche o modelo
-		$usuario->setTipo($_POST["tipo"]);//Preenche o modelo
-		echo json_encode($ud->create($usuario));//Executa o método create de DAO passando o modelo como parâmetro
+		if(!empty($_POST["id"])){
+			$usuario = new Usuario();//Cria um novo objeto Pessoa (modelo)
+			$usuario->setIdPessoa($_POST["id"]);//Preenche o modelo
+			$usuario->setLogin($_POST["login"]);//Preenche o modelo
+			$usuario->setSenha($_POST["senha"]);//Preenche o modelo
+			$usuario->setTipo($_POST["tipo"]);//Preenche o modelo
+			echo json_encode($ud->create($usuario));//Executa o método create de DAO passando o modelo como parâmetro
+		}
+		if(!empty($_POST["login"])&&!empty($_POST["senha"])&&empty($_POST["id"])){
+			$login = $_POST["login"];
+			$senha = $_POST["senha"];
+			echo json_encode($ud->login($login,$senha));
+		}
 	}
 	
 	if(!empty($_PUT)){ //Se o verbo PUT não estiver vazio
@@ -40,7 +47,6 @@
 		$login = $_DELETE["login"];//Recebe o id
 		echo json_encode($ud->del($login));//Executa o método del de DAO passando o login como parâmetro
 	}
-	
 ?>
 	
 

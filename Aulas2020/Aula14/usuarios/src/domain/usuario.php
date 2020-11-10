@@ -51,7 +51,7 @@
             try{//Tenta conectar ao BD e executar a query
                 $con = new Conexao();//Inicia a conexão
                 if(Conexao::getInstancia()->exec($query) >= 1){//O método exec de PDO retorna 0 = fracasso, 1 = sucesso, 2 = sucesso parcial
-                    $resultado[] = $usuario;
+                    $resultado = $usuario;
                 }
                 $con = null;//Fecha a conexão
             } catch (PDOException $e) {//Caso tenha problemas com a conexão retorna o erro abaixo
@@ -150,5 +150,32 @@
 				$resultado["erro"] = "Erro de conexão com o BD";	
 			}
 			return $resultado;
+		}
+		function login($login,$senha){
+			$usuario = null;
+			$query = "SELECT * FROM usuarios WHERE login = '$login'";
+			try{
+				$con = new Conexao();
+				$resultSet = Conexao::getInstancia()->query($query);
+				if($resultSet->fetchObject()){	
+					$query = "SELECT * FROM usuarios WHERE login = '$login' AND senha = md5('$senha')";
+					$resultSet = Conexao::getInstancia()->query($query);
+					if($dados = $resultSet->fetchObject()){
+						$usuario = new Usuario();
+						$usuario->setIdPessoa($dados->id_pessoa);
+						$usuario->setLogin($dados->login);
+						$usuario->setSenha($dados->senha);
+						$usuario->setTipo($dados->tipo);
+					} else {
+						$usuario["erro"] = "A senha informada não confere";
+					}
+				}else{
+					$usuario["erro"] = "Login não encontrado";	
+				}
+				$con = null;
+			}catch(PDOException $e){
+				$usuario["erro"] = "Erro de conexão com o BD";	
+			}
+			return $usuario;
 		}
 	}
