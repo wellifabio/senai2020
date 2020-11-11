@@ -26,12 +26,21 @@
 			$usuario->setLogin($_POST["login"]);//Preenche o modelo
 			$usuario->setSenha($_POST["senha"]);//Preenche o modelo
 			$usuario->setTipo($_POST["tipo"]);//Preenche o modelo
-			echo json_encode($ud->create($usuario));//Executa o método create de DAO passando o modelo como parâmetro
+			$status = $ud->create($usuario);
+			if(is_object($status)){
+				http_response_code(201);
+			}
+			echo json_encode($status);
 		}
 		if(!empty($_POST["login"])&&!empty($_POST["senha"])&&empty($_POST["id"])){
 			$login = $_POST["login"];
 			$senha = $_POST["senha"];
-			echo json_encode($ud->login($login,$senha));
+			$status = $ud->login($login,$senha);
+			if(is_object($status)){
+				header("location:$urlFront?id=".$status->getIdPessoa());	
+			} else {
+				header("location:$urlFront?erro=".$status["erro"]);
+			}
 		}
 	}
 	
@@ -48,5 +57,3 @@
 		echo json_encode($ud->del($login));//Executa o método del de DAO passando o login como parâmetro
 	}
 ?>
-	
-

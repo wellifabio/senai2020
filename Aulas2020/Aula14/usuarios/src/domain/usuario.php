@@ -52,7 +52,9 @@
                 $con = new Conexao();//Inicia a conexão
                 if(Conexao::getInstancia()->exec($query) >= 1){//O método exec de PDO retorna 0 = fracasso, 1 = sucesso, 2 = sucesso parcial
                     $resultado = $usuario;
-                }
+                }else{
+					$resultado["erro"] = "Erro criar usuário";
+				}
                 $con = null;//Fecha a conexão
             } catch (PDOException $e) {//Caso tenha problemas com a conexão retorna o erro abaixo
                 $resultado["erro"] = "Erro ao conectar ao BD";
