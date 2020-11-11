@@ -77,7 +77,7 @@
 				}
 				$con = null;
 			}catch(PDOException $e){
-				$usuarios["erro"] = "Erro de conexão com BD";
+				$usuarios["erro"] = "Erro ao conectar ao BD";
 			}
 			return $usuarios;
 		}
@@ -97,7 +97,7 @@
 				}
 				$con = null;
 			}catch(PDOException $e){
-				$usuarios["erro"] = "Erro de conexão com BD";
+				$usuarios["erro"] = "Erro ao conectar ao BD";
 			}
 			return $usuarios;
 		}
@@ -117,7 +117,7 @@
 				}
 				$con = null;
 			}catch(PDOException $e){
-				$usuarios["erro"] = "Erro de conexão com BD";
+				$usuarios["erro"] = "Erro ao conectar ao BD";
 			}
 			return $usuarios;
 		}
@@ -135,7 +135,7 @@
 				}
 				$con = null;
 			}catch(PDOException $e){
-				$resultado["erro"] = "Erro de conexão com o BD";	
+				$resultado["erro"] = "Erro ao conectar ao BD";	
 			}
 			return $resultado;
 		}
@@ -149,7 +149,7 @@
 				}
 				$con = null;
 			}catch(PDOException $e){
-				$resultado["erro"] = "Erro de conexão com o BD";	
+				$resultado["erro"] = "Erro ao conectar ao BD";	
 			}
 			return $resultado;
 		}
@@ -169,14 +169,14 @@
 						$usuario->setSenha($dados->senha);
 						$usuario->setTipo($dados->tipo);
 					} else {
-						$usuario["erro"] = "A senha informada não confere";
+						$usuario["erro"] = "A senha informada nao confere";
 					}
 				}else{
-					$usuario["erro"] = "Login não encontrado";	
+					$usuario["erro"] = "Login nao encontrado";	
 				}
 				$con = null;
 			}catch(PDOException $e){
-				$usuario["erro"] = "Erro de conexão com o BD";	
+				$usuario["erro"] = "Erro ao conectar ao BD";	
 			}
 			return $usuario;
 		}

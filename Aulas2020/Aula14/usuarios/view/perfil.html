@@ -8,7 +8,7 @@
     <title>Perfil</title>
 </head>
 
-<body>
+<body onload="carregaPerfil()">
     <div>
         <table>
             <thead>
@@ -21,10 +21,10 @@
                     <td>Nome: <input type="text" id="nome" size="50" /></td>
                 </tr>
                 <tr>
-                    <td align="left">Telefone: <input type="text" id="telefone" /></td>
+                    <td align="left" id="telefones">Telefones: </td>
                 </tr>
                 <tr>
-                    <td align="left">Login: <input type="text" id="login" /></td>
+                    <td align="left">Login: <input type="text" id="login" readonly /></td>
                 </tr>
                 <tr>
                     <td align="left">Senha: <input type="password" id="senha" /></td>
@@ -33,11 +33,15 @@
                     <td align="left">Confirma senha: <input type="password" id="csenha" /></td>
                 </tr>
                 <tr>
-                    <td align="right"><input type="button" value="Atualizar" /></td>
+                    <td align="right">
+                        <input type="button" value="Atualizar" />
+                        <input type="button" value="Sair" onclick="sair()" />
+                    </td>
                 </tr>
             </tbody>
         </table>
     </div>
+    <script src="perfiladm.js"></script>
 </body>
 
 </html>

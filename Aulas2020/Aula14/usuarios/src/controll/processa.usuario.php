@@ -37,7 +37,7 @@
 			$senha = $_POST["senha"];
 			$status = $ud->login($login,$senha);
 			if(is_object($status)){
-				header("location:$urlFront?id=".$status->getIdPessoa());	
+				header("location:$urlFront?login=".$status->getLogin()."&tipo=".$status->getTipo()."&id=".$status->getIdPessoa());
 			} else {
 				header("location:$urlFront?erro=".$status["erro"]);
 			}
