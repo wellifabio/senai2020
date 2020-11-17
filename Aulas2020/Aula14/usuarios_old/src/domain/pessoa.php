@@ -111,8 +111,6 @@
 						//Erro de fluxo, pois tanto a sintaxe quanto a lógica estão corretas, porém a necessidade de negócio descrita no MER/DER
 						//Diz que uma pessoa pode ter no mínimo 0 e máximo Muitos telefones, caso a pessoa não possua telefone, este não será adicionado
 					}
-				} else {
-					$resultado["erro"] = "Não foi possível alterar Pessoa";
 				}
 				$con = null;
 			}catch(PDOException $e){
