@@ -1,14 +1,14 @@
 const msg = document.querySelector("#mensagem");
 const tableUsuario = document.querySelector("#bodyUsuarios");
 const tablePessoa = document.querySelector("#bodyPessoas");
-const urlPessoa = "http://localhost/usuarios/src/controll/processa.pessoa.php?id=0";
-const urlUsuario = "http://localhost/usuarios/src/controll/processa.usuario.php?id=0";
+const urlPessoa = "../src/controll/processa.pessoa.php?id=0";
+const urlUsuario = "../src/controll/processa.usuario.php?id=0";
 const urlId = location.search.slice(1).split("=")[2];
 const urlLogin = location.search.slice(1).split("&")[0].split("=")[1];
 const nome = document.querySelector("#nome");
 const login = document.querySelector("#login");
 const telefones = document.querySelector("#telefones");
-const urlPerfil = "http://localhost/usuarios/src/controll/processa.pessoa.php?id=" + urlId;
+const urlPerfil = "../src/controll/processa.pessoa.php?id=" + urlId;
 const xhr = new XMLHttpRequest();
 
 function carregaPerfil() {
@@ -85,10 +85,10 @@ function carregaUsuarios() {
     }
 }
 function sair() {
-    window.location.href = "http://localhost/usuarios";
+    window.location.href = "../";
 }
 function atualizaPerfil(tipo) {
-    let url = "http://localhost/usuarios/src/controll/processa.usuario.php";
+    let url = "../src/controll/processa.usuario.php";
     let dados = "";
     msg.innerHTML = "";
 
@@ -113,7 +113,7 @@ function atualizaPerfil(tipo) {
     }
 
     //Envia alteração de nome
-    url = "http://localhost/usuarios/src/controll/processa.pessoa.php";
+    url = "../src/controll/processa.pessoa.php";
     dados = "id=" + urlId;
     dados += "&nome=" + nome.value;
     xhr.addEventListener("readystatechange", function () {
@@ -127,7 +127,7 @@ function atualizaPerfil(tipo) {
 }
 
 function criaPessoa() {
-    let url = "http://localhost/usuarios/src/controll/processa.pessoa.php";
+    let url = "../src/controll/processa.pessoa.php";
     let nom = document.querySelector("#nomePessoa");
     let telefone = document.querySelector("#telPessoa");
     if (nom.value != "" && telefone.value != "") {
@@ -160,7 +160,7 @@ function editPessoa(p) {
 }
 
 function putPessoa(p) {
-    let url = "http://localhost/usuarios/src/controll/processa.pessoa.php";
+    let url = "../src/controll/processa.pessoa.php";
     let id = p.parentNode.parentNode.cells[0].innerHTML;
     let nom = p.parentNode.parentNode.cells[1].innerHTML;
     let tel = p.parentNode.parentNode.cells[2].innerHTML;
@@ -186,7 +186,7 @@ function putPessoa(p) {
 
 
 function delPessoa(p) {
-    let url = "http://localhost/usuarios/src/controll/processa.pessoa.php";
+    let url = "../src/controll/processa.pessoa.php";
     let id = p.parentNode.parentNode.cells[0].innerText;
     let dados = "id=" + id;
     if (window.confirm("Confirma Exclusão do id " + id + "?")) {
@@ -207,7 +207,7 @@ function delPessoa(p) {
 }
 
 function criaUsuario() {
-    let url = "http://localhost/usuarios/src/controll/processa.usuario.php";
+    let url = "../src/controll/processa.usuario.php";
     let id = document.querySelector("#idUser");
     let loginUser = document.querySelector("#loginUser");
     let senha = document.querySelector("#senhaUser");
@@ -244,7 +244,7 @@ function editUsuario(u) {
 }
 
 function putUsuario(u) {
-    let url = "http://localhost/usuarios/src/controll/processa.usuario.php";
+    let url = "../src/controll/processa.usuario.php";
     let login = u.parentNode.parentNode.cells[1].innerHTML;
     let senh = document.querySelector("#senh");
     let tip = document.querySelector("#tip");
@@ -269,7 +269,7 @@ function putUsuario(u) {
 }
 
 function delUsuario(u) {
-    let url = "http://localhost/usuarios/src/controll/processa.usuario.php";
+    let url = "../src/controll/processa.usuario.php";
     let loginUser = u.parentNode.parentNode.cells[1].innerText;
     let dados = "login=" + loginUser;
     if (window.confirm("Confirma Exclusão do login " + loginUser + "?")) {

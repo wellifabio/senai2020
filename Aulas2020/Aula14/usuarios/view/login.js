@@ -5,7 +5,7 @@ const msg = document.querySelector("#mensagem");
 function acessar() {
     let xhr = new XMLHttpRequest();
     xhr.withCredentials = true;
-    let url = "http://localhost/usuarios/src/controll/processa.usuario.php";
+    let url = "../src/controll/processa.usuario.php";
     let dados = new FormData();
     if (login.value != "" && senha.value != "") {
         dados.append("login", login.value);
