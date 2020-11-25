@@ -1,4 +1,5 @@
 const msg = document.querySelector("#mensagem");
+const xhr = new XMLHttpRequest();
 const tableUsuario = document.querySelector("#bodyUsuarios");
 const tablePessoa = document.querySelector("#bodyPessoas");
 const urlPessoa = "../src/controll/processa.pessoa.php?id=0";
@@ -9,7 +10,8 @@ const nome = document.querySelector("#nome");
 const login = document.querySelector("#login");
 const telefones = document.querySelector("#telefones");
 const urlPerfil = "../src/controll/processa.pessoa.php?id=" + urlId;
-const xhr = new XMLHttpRequest();
+let contTel = 0;
+let tels = [];
 
 function carregaPerfil() {
     fetch(urlPerfil)
@@ -22,13 +24,29 @@ function carregaPerfil() {
         .then(function (data) {
             //Se obteve a resposta explora os dados recebidos
             data.forEach((val) => {
-                let telefone = document.createElement("input");
-                telefone.setAttribute("readonly", "");
-                telefone.value = val.telefone;
                 nome.value = val.nome;
                 login.value = urlLogin;
-                telefones.appendChild(telefone);
+                if (val.telefone != null) {
+                    let telefone = document.createElement("input");
+                    let edit = document.createElement("button");
+                    let del = document.createElement("button");
+                    telefone.setAttribute("id", "tel" + contTel);
+                    edit.innerHTML = "Edit";
+                    edit.setAttribute("onclick", "editTel(tel" + contTel + ","+contTel+")");
+                    del.innerHTML = "Del";
+                    del.setAttribute("onclick", "delTel(tel" + contTel + ")");
+                    telefone.value = val.telefone;
+                    telefones.appendChild(telefone);
+                    telefones.appendChild(edit);
+                    telefones.appendChild(del);
+                    tels[contTel] = val.telefone;
+                    contTel++;
+                }
             });
+            let add = document.createElement("button");
+            add.innerHTML = "Add";
+            add.setAttribute("onclick", "addTel()");
+            telefones.appendChild(add);
         }) //Se obteve erro no processo exibe no console do navegador
         .catch(function (error) {
             console.error(error.message);
@@ -102,7 +120,7 @@ function atualizaPerfil(tipo) {
             dados += "&tipo=" + tipo;
             xhr.addEventListener("readystatechange", function () {
                 if (this.readyState === this.DONE) {
-                    msg.innerHTML = "Nova senha configurada.<br>";
+                    msg.innerHTML += "Senha atualizada com sucesso,<br/>";
                 }
             });
             xhr.open("PUT", url);
@@ -118,7 +136,12 @@ function atualizaPerfil(tipo) {
     dados += "&nome=" + nome.value;
     xhr.addEventListener("readystatechange", function () {
         if (this.readyState === this.DONE) {
-            msg.innerHTML += "Nome atualizado com sucesso.";
+            let resp = JSON.parse(this.responseText);
+            if (resp.hasOwnProperty("erro")) {
+                msg.innerHTML += resp.erro;
+            } else {
+                msg.innerHTML += resp.mensagem;
+            }
         }
     });
     xhr.open("PUT", url);
@@ -286,5 +309,84 @@ function delUsuario(u) {
         });
         xhr.open("DELETE", url);
         xhr.send(dados);
+    }
+}
+
+function editTel(t,indice) {
+    let url = "../src/controll/processa.pessoa.php";
+    let dados = "id="+urlId;
+    dados += "&old_telefone="+tels[indice];
+    dados += "&new_telefone="+t.value;
+    if (tels[indice] != t.value && t.value != "") {
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                let resp = JSON.parse(this.responseText);
+                if (resp.hasOwnProperty("erro")) {
+                    msg.innerHTML = resp.erro;
+                } else {
+                    msg.innerHTML = "Telefone alterado com sucesso.";
+                }
+                setTimeout(() => { window.location.reload(); }, 500);
+            }
+        });
+        xhr.open("PUT", url);
+        xhr.send(dados);
+    }
+}
+
+function delTel(t) {
+    let url = "../src/controll/processa.pessoa.php";
+    let dados = "id=" + urlId;
+    dados += "&telefone=" + t.value;
+    if (window.confirm("Confirma Exclusão do telefone " + t.value + "?")) {
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                let resp = JSON.parse(this.responseText);
+                if (resp.hasOwnProperty("erro")) {
+                    msg.innerHTML = resp.erro;
+                } else {
+                    msg.innerHTML = "Telefone excluído com sucesso.";
+                }
+                setTimeout(() => { window.location.reload(); }, 500);
+            }
+        });
+        xhr.open("DELETE", url);
+        xhr.send(dados);
+    }
+}
+
+function addTel() {
+    let telefone = document.createElement("input");
+    telefone.setAttribute("id", "tel" + contTel);
+    let send = document.createElement("button");
+    send.innerHTML = "Enviar";
+    send.setAttribute("onclick", "sendTel(tel" + contTel + ")");
+    telefones.appendChild(telefone);
+    telefones.appendChild(send);
+    contTel++;
+}
+
+function sendTel(t) {
+    let url = "../src/controll/processa.pessoa.php";
+    if (t.value != "") {
+        let dados = new FormData();
+        dados.append("id", urlId);
+        dados.append("telefone", t.value);
+        xhr.addEventListener("readystatechange", function () {
+            if (this.readyState === this.DONE) {
+                let resp = JSON.parse(this.responseText);
+                if (resp.hasOwnProperty("erro")) {
+                    msg.innerHTML = resp.erro;
+                } else {
+                    msg.innerHTML = "Telefone criado com sucesso.";
+                }
+                setTimeout(() => { window.location.reload(); }, 500);
+            }
+        });
+        xhr.open("POST", url);
+        xhr.send(dados);
+    } else {
+        msg.innerHTML = "Favor preencher o telefone.";
+        setTimeout(() => { msg.innerHTML = "Mensagens do sistema"; }, 500);
     }
 }

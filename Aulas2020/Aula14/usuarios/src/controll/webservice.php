@@ -21,6 +21,9 @@
 				$login = $request->login;
 				$senha = $request->senha;
 				$status = $ud->login($login,$senha);
+				if(!is_object($status)){
+					http_response_code(401);
+				}
 				echo json_encode($status);
 			}
             break;
