@@ -1,6 +1,5 @@
 <?php
-	require("conexao.php");//Importa a classe Conexao que utiliza o objeto PDO
-	
+
 	//Model ou Domain são a mesma camada, apenas nomes diferentes
 	//Normalmente a classe DAO também faz parte da camada Model no padrão MVC
 

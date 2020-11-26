@@ -1,4 +1,5 @@
 <?php
+	require("../domain/conexao.php");//Importa a classe Conexao que utiliza o objeto PDO
     require("../domain/pessoa.php"); //Funciona como import do JAVA requer o arquivo de modelo "pessoa.php"
 	$pd = new PessoaDAO(); //Objeto da classe PessoaDAO para acesso ao Banco de Dados
 	

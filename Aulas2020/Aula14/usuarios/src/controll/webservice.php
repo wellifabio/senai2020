@@ -1,7 +1,10 @@
 <?php
 
-    require("../domain/usuario.php");
+	require("../domain/conexao.php");//Importa a classe Conexao que utiliza o objeto PDO
+	require("../domain/usuario.php");
+	require("../domain/pessoa.php");
 	$ud = new UsuarioDAO();
+	$pd = new PessoaDAO();
 	
 	header("Access-Control-Allow-Origin:*");
 	header('Access-Control-Allow-Methods: GET, PUT, POST, DELETE, OPTIONS');
@@ -12,7 +15,13 @@
 	$method = $_SERVER['REQUEST_METHOD'];
 	switch($method) {
         case 'GET' :
-			echo '{"msg":"Chegou por GET"}';
+			if(isset($_GET["id"])){
+				if($_GET["id"]=="0"){//Filtro, o id for igual a 0 vamos listar todas as pessoas
+					echo json_encode($pd->readAll());
+				} else { //Senão vamos listar somente a pessoa com o id informado
+					echo json_encode($pd->read($_GET["id"]));
+				}
+			}
             break;
         case 'POST' :
 			$postdata = file_get_contents("php://input");
