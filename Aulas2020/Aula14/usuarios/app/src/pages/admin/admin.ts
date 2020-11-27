@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { forEachChild } from 'typescript';
 import { Pessoa } from "../../models/pessoa.dto";
 import { PessoaService } from '../../services/pessoa.service';
 
@@ -17,16 +18,17 @@ import { PessoaService } from '../../services/pessoa.service';
 })
 export class AdminPage {
 
-  items: Pessoa[];
+  pessoas: Pessoa[];
 
   constructor(public navCtrl: NavController, public navParams: NavParams, public pessoaService: PessoaService) {
   }
 
   ionViewDidLoad() {
-    let pessoa : Pessoa = { idPessoa:'0', nome: '', telefone:''};
-    this.pessoaService.get(pessoa).subscribe(
+    let id = "0";
+    this.pessoaService.get(id).subscribe(
       (response:Pessoa[])=>{
-        this.items = response;
+        this.pessoas = response;
+        console.log(response);
       },
       error => {
         console.log(error);

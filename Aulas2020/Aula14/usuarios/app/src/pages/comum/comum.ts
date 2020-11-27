@@ -1,5 +1,7 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { Pessoa } from '../../models/pessoa.dto';
+import { PessoaService } from '../../services/pessoa.service';
 
 /**
  * Generated class for the ComumPage page.
@@ -15,11 +17,21 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class ComumPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams) {
+  pessoas: Pessoa[];
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, public pessoaService: PessoaService) {
   }
 
   ionViewDidLoad() {
-    console.log('ionViewDidLoad ComumPage');
+    let id = "1";
+    this.pessoaService.get(id).subscribe(
+      (response:Pessoa[])=>{
+        this.pessoas = response;
+      },
+      error => {
+        console.log(error);
+      }
+    );
   }
 
 }

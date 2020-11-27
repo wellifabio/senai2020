@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
-import { NavController, IonicPage } from 'ionic-angular';
+import { NavController, IonicPage, MenuController } from 'ionic-angular';
+import { Usuario } from '../../models/usuario.dto';
 
 @IonicPage()
 
@@ -9,8 +10,27 @@ import { NavController, IonicPage } from 'ionic-angular';
 })
 export class HomePage {
 
-  constructor(public navCtrl: NavController) {
+  user : Usuario = {
+    idPessoa: "",
+    login : "",
+    senha : "",
+    tipo : ""
+  }  
+
+  constructor(public navCtrl: NavController, public menu: MenuController) {
 
   }
 
+  ionViewWillEnter() {
+    this.menu.swipeEnable(false);
+  }
+  
+  ionViewDidLeave() {
+    this.menu.swipeEnable(true);
+  }
+
+  login(){
+    console.log(this.user);
+    //this.navCtrl.setRoot('ComumPage');
+  }
 }

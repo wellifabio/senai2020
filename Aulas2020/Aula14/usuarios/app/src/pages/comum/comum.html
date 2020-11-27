@@ -7,12 +7,19 @@
 <ion-header>
 
   <ion-navbar>
-    <ion-title>Comum</ion-title>
+    <ion-title>Usuário Comum</ion-title>
   </ion-navbar>
 
 </ion-header>
 
 
 <ion-content padding>
-
+  <button ion-item *ngFor="let pessoa of pessoas">
+    <ion-thumbnail item-left>
+      <img src="../../assets/imgs/usuario.svg">
+    </ion-thumbnail>
+    <h2>Id: {{pessoa.idPessoa}}</h2>
+    <h2>Nome: {{pessoa.nome}}</h2>
+    <h2>Telefone: {{pessoa.telefone}}</h2>
+  </button>
 </ion-content>

@@ -1,4 +1,4 @@
-export interface Pessoa{
+export interface Pessoa {
     idPessoa: String;
     nome: String;
     telefone: String;

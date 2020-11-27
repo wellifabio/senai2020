@@ -8,9 +8,9 @@ export class PessoaService {
 
     constructor(public httpClient: HttpClient) {}
 
-    get(pessoa: Pessoa){
-        var url = APICONFIG.urlBase+"/webservice.php?id="+pessoa.idPessoa;
+    get(id: String){
+        let url = APICONFIG.urlBase+"/webservice.php?id="+id;
         return this.httpClient.get<Pessoa[]>(url);
     }
-
+    
 }

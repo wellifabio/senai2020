@@ -18,11 +18,13 @@ function acessar() {
                 } else {
                     let destino = "";
                     if (resp.tipo === "adm") {
-                        destino += "perfiladm.html";
+                        destino += "admin.html";
                     } else {
-                        destino += "perfil.html";
+                        destino += "comum.html";
                     }
-                    window.location.href = destino + "?login=" + resp.login + "&id=" + resp.idPessoa;
+					window.localStorage.setItem("login",resp.login);
+					window.localStorage.setItem("id", resp.idPessoa);
+                    window.location.href = destino;
                 }
             }
         });
