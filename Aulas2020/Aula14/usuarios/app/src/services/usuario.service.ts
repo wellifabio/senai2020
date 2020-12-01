@@ -6,16 +6,16 @@ import { APICONFIG } from "../config/api.config";
 @Injectable()
 export class UsuarioService {
 
-    constructor(public httpClient: HttpClient) { }
+    constructor(public httpUser: HttpClient) { }
 
     login(user: Usuario) {
         let url = APICONFIG.urlBase + "/webservice.php";
         let data = {
             "login": user.login,
             "senha": user.senha
-        };
+        }
         let header = { "headers": { "Content-Type": "application/json" } };
-        return this.httpClient.post(url, data, header);
+        return this.httpUser.post<any>(url, data, header);
     }
 
 }

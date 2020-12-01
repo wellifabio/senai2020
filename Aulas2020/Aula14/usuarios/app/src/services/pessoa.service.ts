@@ -6,11 +6,11 @@ import { APICONFIG } from "../config/api.config";
 @Injectable()
 export class PessoaService {
 
-    constructor(public httpClient: HttpClient) {}
+    constructor(public httpPessoa: HttpClient) {}
 
     get(id: String){
         let url = APICONFIG.urlBase+"/webservice.php?id="+id;
-        return this.httpClient.get<Pessoa[]>(url);
+        return this.httpPessoa.get<Pessoa[]>(url);
     }
     
 }

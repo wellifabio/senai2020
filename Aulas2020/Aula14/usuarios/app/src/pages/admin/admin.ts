@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { forEachChild } from 'typescript';
 import { Pessoa } from "../../models/pessoa.dto";
 import { PessoaService } from '../../services/pessoa.service';
+import { StorageService } from '../../services/storage.service';
 
 /**
  * Generated class for the AdminPage page.
@@ -20,15 +20,18 @@ export class AdminPage {
 
   pessoas: Pessoa[];
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public pessoaService: PessoaService) {
+  constructor(public navCtrl: NavController,
+    public navParams: NavParams,
+    public pessoaService: PessoaService,
+    public storageService: StorageService) {
   }
 
   ionViewDidLoad() {
+    console.log(this.storageService.getUsuario());
     let id = "0";
     this.pessoaService.get(id).subscribe(
       (response:Pessoa[])=>{
         this.pessoas = response;
-        console.log(response);
       },
       error => {
         console.log(error);
