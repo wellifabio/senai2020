@@ -12,4 +12,6 @@ git commit -m "Mensagem sobre o commit"
 git push
 
 Ionic:
-Aprendendo ionic, repositório para exemplos de Ionic App Slides: https://drive.google.com/drive/folders/1_pDKNDfn-6UBqDogzVQ6st9yiwBP1aZO Git do Professor Rafael https://github.com/rafaelalvesmartins Git do Professor Reenye https://github.com/ReenyeLima
+Aprendendo ionic, repositório para exemplos de Ionic App Slides: https://drive.google.com/drive/folders/1_pDKNDfn-6UBqDogzVQ6st9yiwBP1aZO
+Git do Professor Rafael https://github.com/rafaelalvesmartins
+Git do Professor Reenye https://github.com/ReenyeLima

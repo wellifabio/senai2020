@@ -1,0 +1,5 @@
+Baseando-se no exemplo (tabelabiscoito.html e scriptcookie.js) em https://github.com/wellifabio/frontend/tree/master/2des2020/aula6/ex2 
+Crie um site escolhendo um dos seguintes temas (OBS: os temas estão melhor explicado na Aula 8):
+Lista de convidados de uma festa onde o usuário possa adicionar convidados a uma tabela e possa controlar o status = "Confirmado", "Aguardando" e "Recusado"
+Agenda de Compromissos, onde o usuário adione uma data, uma descrição de compromissos.
+Ou outro tema de sua preferência, desde que possa ser colocado em uma tabela com as opções de Adicionar, Alterar e Excluir.

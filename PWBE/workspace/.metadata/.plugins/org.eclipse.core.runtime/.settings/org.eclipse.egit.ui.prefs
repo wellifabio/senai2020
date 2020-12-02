@@ -1,0 +1,5 @@
+commit_dialog_history_messages=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<messages>\r\n<message>Removidos m\u00E9todos n\u00E3o utilizados em Model</message>\r\n<message>Carteira conlcuida REST FULL (json)</message>\r\n<message>Exemplo de CRUD &quot;jsp&quot; para BD(arquivos texto .CSV)&\#x0A;</message>\r\n<message>Carteira implementada no formato REST.</message>\r\n<message>Ajustado CSS, e Mensagens com TimeOut de 3 Segs</message>\r\n<message>Erro utf-8 corrigido e adicionado Servlet e jsp REST</message>\r\n<message>FrontEnd CRUD completo e corrigido erros do BackEnd</message>\r\n<message>Add func. DELETE. Em Update (DAO e Controller - Falta FrontEnd)</message>\r\n<message>Controle de fila de mensagens implementado com sucesso</message>\r\n<message>Conex\u00E3o com Banco de Dados SGBD MySQL - Listar e Inserir.</message>\r\n</messages>
+eclipse.preferences.version=1
+repositories_view_filters=<?xml version\="1.0" encoding\="UTF-8"?>\r\n<FilterCache/>
+resourcehistory_graph_split=500,500
+resourcehistory_rev_split=700,300

@@ -1,0 +1,12 @@
+127.0.0.1 - - [26/Aug/2020:11:27:48 -0300] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:27:49 -0300] "GET /Veiculos/index.jsp HTTP/1.1" 200 1578
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:27:49 -0300] "GET /favicon.ico HTTP/1.1" 404 1085
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:30:02 -0300] "POST /Veiculos/index.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:30:02 -0300] "GET /Veiculos/index.jsp HTTP/1.1" 200 1787
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:30:23 -0300] "POST /Veiculos/index.jsp HTTP/1.1" 302 -
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:30:23 -0300] "GET /Veiculos/index.jsp HTTP/1.1" 200 1571
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:30:48 -0300] "POST /Veiculos/index.jsp HTTP/1.1" 200 896
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:30:54 -0300] "GET /Veiculos/index.jsp HTTP/1.1" 200 1571
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:33:46 -0300] "GET /SorteioGrupos/index.jsp HTTP/1.1" 200 5302
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:34:08 -0300] "GET /SorteioGrupos/index.jsp? HTTP/1.1" 200 5302
+0:0:0:0:0:0:0:1 - - [26/Aug/2020:11:34:11 -0300] "GET /SorteioGrupos/index.jsp? HTTP/1.1" 200 5302

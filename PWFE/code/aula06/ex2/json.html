@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="ipapel.png">
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <title>Consome API</title>
+</head>
+
+<body>
+    <script>
+        //Outro exemplo sobre como consumir API (JSON.stringify(myJSON) e JSON.parse(myJSON))
+        var requestURL = "http://localhost/site/src/controllers/";
+        var request = new XMLHttpRequest();
+        request.open('GET', requestURL);
+        request.responseType = 'json';
+        request.send();
+        request.onload = function() {
+            console.log(request.response);
+            var p = document.createElement("p");
+            p.innerText = JSON.stringify(request.response);
+            document.body.appendChild(p);
+        }
+    </script>
+</body>
+
+</html>

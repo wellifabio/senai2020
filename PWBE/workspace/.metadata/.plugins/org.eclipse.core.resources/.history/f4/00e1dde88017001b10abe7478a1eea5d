@@ -1,0 +1,100 @@
+<%@page import="controllers.Mensagem"%>
+<%@ page language="java" contentType="text/html; charset=utf-8"
+	pageEncoding="utf-8"%>
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<link rel="stylesheet" type="text/css" href="estilo.css" />
+<title>Lista de Carteiras</title>
+</head>
+<body onload="carregaJSON()">
+	<div class="tableResult">
+		<table>
+			<!-- (READ) Tabela para listar os dados lidos no Banco de Dados -->
+			<thead>
+				<tr>
+					<th>id Cliente</th>
+					<th>Nome</th>
+					<th>lucro Esperado</th>
+					<th>Prejuizo Maximo</th>
+					<th>Perfil de Investimento</th>
+					<th>Ações</th>
+				</tr>
+			</thead>
+			<tbody id="corpoTabela">
+			</tbody>
+		</table>
+	</div>
+	<div class="form1">
+		<!-- (CREATE) Formulário para cadastro de novas Carteiras -->
+		<form method="POST" action="carteirarest">
+			<input type="text" name="nome" placeholder="Nome" /> <input
+				type="number" name="lucro_esperado" placeholder="Lucro Esperado" />
+			<input type="number" name="prejuiso_maximo"
+				placeholder="Prejuizo Maximo" /><select name="perfil_investimento">
+				<option>Perfil de Investimento</option>
+				<option>Conservador</option>
+				<option>Moderado</option>
+				<option>Agressivo</option>
+			</select> <input type="submit" value="Adicionar" />
+		</form>
+	</div>
+	<div class="mensagem" id="msg">
+		<!-- Espaço reservado para menságens do sistema que desaparecem após 3 segundos -->
+		<%
+			if (!Mensagem.getMensagens().isEmpty())
+			while (!Mensagem.getMensagens().isEmpty())
+				out.print("<p>" + Mensagem.getMensagem() + "</p>");
+		else
+			out.print("<p>Mensagens do sistema:</p>");
+		%>
+		<script>setTimeout(() => {document.getElementById("msg").style.display="none"}, 3000);</script>
+	</div>
+	<script src="carteirarest.js"></script>
+	<script>
+	
+	const corpoTabela = document.querySelector("#corpoTabela");
+	//Função para ler um JSON obtido através de uma requisição GET do Servlet Java
+	function carregaJSON() {
+		let url = "carteirarest";
+		fetch(url, { method: "GET" })
+			.then(function(resposta) {
+				if (!resposta.ok){
+					throw new Error("Erro ao executar requisição: " + resposta.status);
+				}
+				return resposta.json();
+			})
+			.then(function(jsonArray) {
+				jsonArray.forEach((json)=>{
+					const linha = document.createElement("tr");
+					const col1 = document.createElement("td");
+					const col2 = document.createElement("td");
+					const col3 = document.createElement("td");
+					const col4 = document.createElement("td");
+					const col5 = document.createElement("td");
+					const col6 = document.createElement("td");
+					col1.innerText = json.id;
+					col2.innerText = json.nome;
+					col3.innerText = json.lucroEsperado;
+					col4.innerText = json.prejuisoMaximo;
+					col5.innerText = json.perfilDeInvestimento;
+					col6.innerHTML = "<button onclick='alterar(this)'>Editar</button>"
+					col6.innerHTML += "<button oncllick='excluir(this)'>Excluir</button>"
+					linha.appendChild(col1);
+					linha.appendChild(col2);
+					linha.appendChild(col3);
+					linha.appendChild(col4);
+					linha.appendChild(col5);
+					linha.appendChild(col6);
+					corpoTabela.appendChild(linha);
+				});
+			})
+			.catch(function(erro) {
+				console.error(erro.message);
+			});
+	}
+	
+	</script>
+</body>
+</html>

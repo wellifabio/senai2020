@@ -1,0 +1,7 @@
+{
+  "name": "OlaMundo",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}

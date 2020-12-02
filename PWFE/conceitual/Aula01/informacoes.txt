@@ -1,0 +1,10 @@
+FrontEnd Online
+Compilador HTML CSS e JavaScript
+https://jsbin.com/
+
+Aula sobre array e objetos.
+https://www.youtube.com/watch?v=2sZerMlCzBM&t=3s
+Aula sobre function e Arrow Function.
+https://www.youtube.com/watch?v=3EkS9-P3cIM
+
+

@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="icone.png">
+    <link rel="stylesheet" type="text/css" href="estilo.css" />
+    <title>Financiamentos</title>
+</head>
+
+<body>
+    <div class="cabecalho">
+        <label>Valor Financiados</label>
+        <label>Número de Parcelas</label>
+        <label>Juros ao mês</label>
+        <label>Montante Final</label>
+        <label>Valor das Parcelas</label>
+        <label></label>
+    </div>
+    <div class="form2">
+        <form method="POST">
+            <input type="number" placeholder="Valor Financiado" id="valorFinanciado" name="valor" />
+            <input type="number" placeholder="Número de Parcelas" id="numeroParcelas" name="parcelas" />
+            <input type="number" placeholder="% Juros am" id="porcentagemJuros" />
+            <input type="text" placeholder="Montante" id="montanteFinal" disabled="" />
+            <input type="text" placeholder="Valor das Parcelas" id="valorParcelas" disabled="" />
+            <input type="button" value="Adicionar" id="botao" />
+        </form>
+    </div>
+    <div class="tableResult">
+        <table>
+            <tbody id="tableBody">
+            </tbody>
+        </table>
+    <script src="script.js"></script>
+</body>
+
+</html>

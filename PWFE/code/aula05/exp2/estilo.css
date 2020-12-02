@@ -1,0 +1,67 @@
+.form1{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+}
+
+.form1 form{
+    margin:10px;
+}
+
+.form1 form input{
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.cabecalho{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    margin-left: 100px;
+}
+
+.cabecalho label{
+    padding:10px 10px 0px 10px;
+    margin: 10px 10px 0px 10px;
+    width: 150px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+}
+
+.form2{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.form2 form{
+    margin:10px;
+}
+
+.form2 form input{
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.tableResult{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+}
+
+.tableResult td{
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    padding:10px;
+    margin: 10px;
+    width: 160px;
+    font-family: Verdana, Geneva, Tahoma, sans-serif;
+    font-size: 14px;
+    text-align: right;
+}
+
+.tableResult button{
+    padding:5px;
+    width:80px;
+}

@@ -1,0 +1,68 @@
+<!-- FrontEnd (html,css,javaScript) interpretado pelo browser (Navegador) localizado no dispositivo do Cliente.
+BackEnd (php, jsp, asp, node.js) interpretado por um servidor web (Apache, tomCat, IIS, v8) localizados
+Em um servidor (computador com uma boa conexão com a internet) pode ser próprio ou contratar um serviço de
+terceitos ex: "hostgator, Amazon" guratuitos "infinity free, 000webhostapp".
+Um cookie é um arquivo que uma página web pode gravar no computador do Cliente
+com 4096 bytes de tamanho máximo
+-->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="shortcut icon" href="ipapel.png">
+    <title>Trabalhando com Cookies</title>
+</head>
+<body onload="verifyCookie()">
+    <div>
+        <p>
+            Bem vindo <label id="user"></label>.<br>
+            Este site cria um cookie chamado "usename" que armazena o seu nome:<br>
+            Utitiliza JavaScript para gravar e ler este arquivo.<br>
+            Para que este recurso funcione corretamente o seu browser (Navegador)<br>
+            deve estar configurado para permitir cookies.<br>
+            OBS(Documentário netflix sobre Redes sociais: Dilema das Redes)
+        </p>
+    </div>
+    <script>
+        //Obter o destino dos dados do cookie (Neste caso o nome do usuário)
+        const lbName = document.querySelector("#user");
+        
+        //Função que cria um Cookie (arquivo)
+        const createCookie = (name, data) => {
+            let dateExpires = "expires = Monday, September 21, 2022 at 9:28:13 AM";
+            document.cookie = name + "=" + data +  ";" + dateExpires;
+        }
+
+        //Função que lê todos os cookies e tenta encontrar o coockie desta página
+        const readCookie = (name) => {
+            let vName = name + "=";
+            let vectorCookies = document.cookie.split(";"); //Lê todos os cookies e retorna um Vetor
+            for(let i = 0; i < vectorCookies.length; i++){
+                let c = vectorCookies[i];
+                while(c.charAt(0) == " "){
+                    c = c.substring(1);
+                }//Eliminar espaços em branco
+                if(c.indexOf(vName) == 0){ //Se encontrar o cookie retorna os dados dele
+                    return c.substring(vName.length,c.length);
+                }
+            }
+            return ""; //Retorna vazio (Cookie não encontrado)
+        }
+
+        //Função que caso o cookie não exista crie ele, se exixtir só lê o que tem nele
+        function verifyCookie(){
+            let username = readCookie("username");
+            if(username != ""){ //Se o cookie foi encontrado
+                lbName.innerText = username;
+            } else {  //Se não foi encontrado, será criado
+                username = prompt("Digite seu nome: ","");
+                if(username != "" && username != null){ //Verifico se o usuário digitou o nome
+                    createCookie("username",username);
+                }
+            }
+        }
+        
+    </script>
+</body>
+</html>

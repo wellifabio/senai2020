@@ -1,0 +1,7 @@
+
+out. 26, 2020 08:03:49.985 NEW SESSION
+out. 26, 2020 08:03:49.985 [9468:12580:1026/080349.976:ERROR:account_info_fetcher.cc(60)] OnGetTokenFailure: Invalid credentials (credentials rejected by server).
+out. 26, 2020 08:03:57.68 [9468:12580:1026/080357.067:ERROR:device_event_log_impl.cc(208)] [08:03:57.067] Bluetooth: bluetooth_adapter_winrt.cc:1076 Getting Default Adapter failed.
+out. 26, 2020 08:13:47.60 [1026/081347.055:ERROR:directory_reader_win.cc(43)] FindFirstFile: O sistema não pode encontrar o caminho especificado. (0x3)
+out. 26, 2020 08:59:44.434 [9468:12024:1026/085944.434:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106
+out. 26, 2020 09:00:04.935 [9468:12024:1026/090004.934:ERROR:connection_factory_impl.cc(428)] Failed to connect to MCS endpoint with error -106

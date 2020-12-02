@@ -1,0 +1,5 @@
+127.0.0.1 - - [08/Sep/2020:11:09:01 -0300] "GET / HTTP/1.1" 404 1074
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:11:09:05 -0300] "GET /ProjetoHortelinoWeb/index.jsp HTTP/1.1" 200 668
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:11:09:05 -0300] "GET /ProjetoHortelinoWeb/estilo/estilo.css HTTP/1.1" 304 -
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:11:09:05 -0300] "GET /ProjetoHortelinoWeb/estilo/icone.png HTTP/1.1" 200 7018
+0:0:0:0:0:0:0:1 - - [08/Sep/2020:11:09:13 -0300] "GET /ProjetoHortelinoWeb/compras.jsp?data= HTTP/1.1" 200 2883

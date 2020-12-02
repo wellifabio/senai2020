@@ -1,0 +1,28 @@
+1) Crie um formulário com dois campos (nome e sobrenome) ao clicar em um botão, um terceiro campo deste formulário deverá ser preenchido com o nome completo.
+
+2) Crie um formulário com três campos (valor financiado, número de parcelas, porcentagem de juros) ao clicar em um botão, dois outros campos de resultado devem ser preenchodos com o valor da parcela e o total do financiamento (OBS: Juros simples).
+
+Exemplo: Crie um fomulário com dois campos (valor1 e valor2) ao clicar em um botão, quatro outros campos de resultado devem ser preenchidos (adicao, subtracao, multiplicacao e divisao).
+
+script.js
+var campo1 = document.querySelector("#valor1");
+var campo2 = document.querySelector("#valor2");
+var botao = document.querySelector("#botao");
+var adicao = document.querySelector("#adicao");
+var subtracao = document.querySelector("#subtracao");
+var multiplicacao = document.querySelector("#multiplicacao");
+var divisao = document.querySelector("#divisao");
+
+botao.addEventListener("click",calcular);
+
+function calcular(){
+    var soma = parseInt(campo1.value) + parseInt(campo2.value);
+    var menos = parseInt(campo1.value) - parseInt(campo2.value);
+    var mult = parseInt(campo1.value) * parseInt(campo2.value);
+    var div = parseInt(campo1.value) / parseInt(campo2.value);
+    
+    adicao.setAttribute("value",soma);
+    subtracao.setAttribute("value",menos);
+    multiplicacao.setAttribute("value",mult);
+    divisao.setAttribute("value",div);
+}

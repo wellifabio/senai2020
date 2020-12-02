@@ -1,0 +1,8 @@
+INDEX VERSION 1.4+D:\ARQUIVOS\SENAI\Planos_Ensino\2020_2_Semestre\PWBE\workspace\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+2393428153.index
+467595458.index
+423107574.index
+2620600266.index
+2119727270.index
+2612413704.index
+4088332284.index
