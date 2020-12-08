@@ -19,7 +19,7 @@ create table registros(
     entrada time not null,
     saida time,
     n_vaga integer not null,
-	constraint fk_registro_veiculo foreign key (placa) references veiculos(placa),
+	constraint fk_registro_veiculo foreign key (placa) references veiculos(placa) on update cascade,
 	constraint fk_registro_vaga foreign key (n_vaga) references vagas(n_vaga)
 );
 
