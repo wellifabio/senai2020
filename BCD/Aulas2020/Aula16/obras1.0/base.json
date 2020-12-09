@@ -1,0 +1,51 @@
+{
+	"Connection" : {
+		"Headers" : {
+			"Content-type" : "application/json; charset=UTF-8",
+			"Access-Control-Allow-Origin" : "http://localhost/",
+			"Access-Control-Allow-Methods" : "GET, PUT, POST, DELETE"
+		}
+	},
+	"Database" : {
+		"host" : "localhost",
+		"port" : "3306",
+		"dbname" : "obras",
+		"user" : "root",
+		"password" : ""
+	},
+	"Class" : [
+		{
+			"name" : "servico",
+			"attributes" : [
+				"id",
+				"nome",
+				"descricao",
+				"local",
+				"tempoEstimado",
+				"antes",
+				"depois"
+			]
+		},
+		{
+			"name" : "profissional",
+			"attributes" : [
+				"cpf",
+				"nome",
+				"funcao",
+				"valorHora",
+				"foto"
+			]
+		},
+		{
+			"name" : "os",
+			"attributes" : [
+				"num_os",
+				"id_servico",
+				"profissional",
+				"dataInicio",
+				"dataConclusao",
+				"tempoTotal"
+			]
+		}
+	]
+}
