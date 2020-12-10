@@ -68,10 +68,10 @@ insert into vagas values
 (default,"Moto Sombra",5),
 (default,"Moto Sombra",5),
 (default,"Moto Sombra",5),
-(default,"Moto Sol",5),
-(default,"Moto Sol",5),
-(default,"Moto Sol",5),
-(default,"Moto Sol",5);
+(default,"Moto Sol",4),
+(default,"Moto Sol",4),
+(default,"Moto Sol",4),
+(default,"Moto Sol",4);
 
 insert into registros values
 ("AAA1A11",curdate()-2,date_add(now(),interval - 5 hour),date_add(now(),interval - 3 hour),1),

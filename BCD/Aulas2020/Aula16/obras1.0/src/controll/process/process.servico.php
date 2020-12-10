@@ -43,16 +43,34 @@
 
 		function doPut($arr){
 			$sd = new ServicoDAO();
-			$sucess = "use to result to DAO";
-			http_response_code(200);
+			$servico = new Servico();
+			if(isset($arr["id"]))$servico->setId($arr["id"]);
+			if(isset($arr["nome"]))$servico->setNome($arr["nome"]);
+			if(isset($arr["descricao"]))$servico->setDescricao($arr["descricao"]);
+			if(isset($arr["localizacao"]))$servico->setLocal($arr["localizacao"]);
+			if(isset($arr["tempo_estimado"]))$servico->setTempoEstimado($arr["tempo_estimado"]);
+			if(isset($arr["antes"]))$servico->setAntes($arr["antes"]);
+			if(isset($arr["depois"]))$servico->setDepois($arr["depois"]);
+			$sucess = $sd->update($servico);
+			if(is_object($sucess)){
+				http_response_code(202);
+			}else{
+				http_response_code(400);
+			}
 			echo json_encode($sucess);
 		}
 
 
 		function doDelete($arr){
 			$sd = new ServicoDAO();
-			$sucess = "use to result to DAO";
-			http_response_code(200);
-			echo json_encode($sucess);
+			if(isset($arr["id"])){
+				$sucess = $sd->delete($arr["id"]);
+				if(isset($sucess["err"])){
+					http_response_code(405);
+				}else{
+					http_response_code(200);
+				}
+				echo json_encode($sucess);
+			}
 		}
 	}

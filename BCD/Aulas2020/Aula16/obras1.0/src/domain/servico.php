@@ -62,44 +62,45 @@
 	class ServicoDAO {
 		function create($servico) {
 			$result = array();
-			$nome = $servico->getNome();
-			$descricao = $servico->getDescricao();
-			$local = $servico->getLocal();
+			$nome = utf8_decode($servico->getNome());
+			$descricao = utf8_decode($servico->getDescricao());
+			$local = utf8_decode($servico->getLocal());
 			$tempoEstimado = $servico->getTempoEstimado();
 			$antes = $servico->getAntes();
 			$depois = $servico->getDepois();
+			$query = "INSERT INTO servicos (nome_obra, descricao, localizacao, tempo_estimado_horas, img_antes, img_depois)";
+			$query .= "VALUES ('$nome', '$descricao','$local','$tempoEstimado','$antes','$depois')";
 			try {
-				$query = "INSERT INTO servicos (nome_obra, descricao, localizacao, tempo_estimado_horas, img_antes, img_depois)";
-				$query .= "VALUES ('$nome', '$descricao','$local','$tempoEstimado','$antes','$depois')";
 				$con = new Connection();
 				if(Connection::getInstance()->exec($query) >= 1){
 					$servico->setId(Connection::getInstance()->lastInsertId());
 					$result = $servico;
+				}else{
+					$result["err"] = "Não foi possível enviar dados ao BD";	
 				}
 				$con = null;
 			}catch(PDOException $e) {
 				$result["err"] = $e->getMessage();
 			}
-
 			return $result;
 		}
 
 		function read($id) {
 			$result = array();
+			if($id != "0"){
+				$query = "SELECT * FROM servicos WHERE id_servico = $id";
+			} else {
+				$query = "SELECT * FROM servicos";
+			}
 			try {
-				if($id != "0"){
-					$query = "SELECT * FROM servicos WHERE id_servico = $id";
-				} else {
-					$query = "SELECT * FROM servicos";
-				}
 				$con = new Connection();
 				$resultSet = Connection::getInstance()->query($query);
 				while($row = $resultSet->fetchObject()){
 					$servico = new Servico();
 					$servico->setId($row->id_servico);
-					$servico->setNome(utf8_decode($row->nome_obra));
-					$servico->setDescricao(utf8_decode($row->descricao));
-					$servico->setLocal(utf8_decode($row->localizacao));
+					$servico->setNome(utf8_encode($row->nome_obra));
+					$servico->setDescricao(utf8_encode($row->descricao));
+					$servico->setLocal(utf8_encode($row->localizacao));
 					$servico->setTempoEstimado($row->tempo_estimado_horas);
 					$servico->setAntes($row->img_antes);
 					$servico->setDepois($row->img_depois);
@@ -107,32 +108,32 @@
 				}
 				$con = null;
 			}catch(PDOException $e) {
+				$result["err"] = "Erro ao conectar com o SGBD";
 				$result["err"] = $e->getMessage();
 			}
-
 			return $result;
 		}
 		
 		function readFinished() {
 			$result = array();
+			$query = "SELECT * FROM vw_servicos_concluidos";
 			try {
-				$query = "SELECT * FROM vw_servicos_concluidos";
 				$con = new Connection();
 				$resultSet = Connection::getInstance()->query($query);
 				while($row = $resultSet->fetchObject()){
 					$servicoc = array();
 					$servicoc["id"] = $row->id_servico;
-					$servicoc["nome"] = utf8_decode($row->nome_obra);
-					$servicoc["descricao"] = utf8_decode($row->descricao);
-					$servicoc["local"] = utf8_decode($row->localizacao);
+					$servicoc["nome"] = utf8_encode($row->nome_obra);
+					$servicoc["descricao"] = utf8_encode($row->descricao);
+					$servicoc["local"] = utf8_encode($row->localizacao);
 					$servicoc["tempoHoras"] = $row->tempo_total_horas;
-					$servicoc["profissional"] = utf8_decode($row->nome);
-					$servicoc["funcao"] = utf8_decode($row->funcao_principal);
-					$servicoc["custo"] = utf8_decode($row->custo_do_servico);
-					$servicoc["antes"] = utf8_decode($row->img_antes);
-					$servicoc["depois"] = utf8_decode($row->img_depois);
-					$servicoc["imgProf"] = utf8_decode($row->foto);
-					$servicoc["dataConclusao"] = utf8_decode($row->data_conclusao);
+					$servicoc["profissional"] = utf8_encode($row->nome);
+					$servicoc["funcao"] = utf8_encode($row->funcao_principal);
+					$servicoc["custo"] = utf8_encode($row->custo_do_servico);
+					$servicoc["antes"] = utf8_encode($row->img_antes);
+					$servicoc["depois"] = utf8_encode($row->img_depois);
+					$servicoc["imgProf"] = utf8_encode($row->foto);
+					$servicoc["dataConclusao"] = utf8_encode($row->data_conclusao);
 					$result[] = $servicoc;
 				}
 				$con = null;
@@ -143,38 +144,43 @@
 			return $result;
 		}		
 
-		function update() {
+		function update($servico) {
 			$result = array();
-
+			$id = $servico->getId();
+			$nome = utf8_decode($servico->getNome());
+			$descricao = utf8_decode($servico->getDescricao());
+			$local = utf8_decode($servico->getLocal());
+			$tempoEstimado = $servico->getTempoEstimado();
+			$antes = $servico->getAntes();
+			$depois = $servico->getDepois();
+			$query = "UPDATE servicos SET nome_obra = '$nome', descricao = '$descricao', localizacao = '$local',";
+			$query .= "tempo_estimado_horas = '$tempoEstimado', img_antes = '$antes', img_depois = '$depois'";
+			$query .= "WHERE id_servico = $id";
 			try {
-				$query = "UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition";
-
 				$con = new Connection();
-
 				$status = Connection::getInstance()->prepare($query);
-
 				if($status->execute()){
+					$result = $servico;
+				} else {
+					$result["err"] = "Não foi possível alterar dados no BD";
 				}
-
 				$con = null;
 			}catch(PDOException $e) {
 				$result["err"] = $e->getMessage();
 			}
-
 			return $result;
 		}
 
-		function delete() {
+		function delete($id) {
 			$result = array();
-
+			$query = "DELETE FROM servicos WHERE id_servico=$id";
 			try {
-				$query = "DELETE FROM table_name WHERE condition";
-
 				$con = new Connection();
-
 				if(Connection::getInstance()->exec($query) >= 1){
+					$result["suss"] = "Registro id = $id excluído com sucesso";
+				} else {
+					$result["err"] = "Não foi possível excluir dados no BD";
 				}
-
 				$con = null;
 			}catch(PDOException $e) {
 				$result["err"] = $e->getMessage();
