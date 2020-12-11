@@ -1,25 +1,25 @@
 <?php
 
 	class Os {
-		var $num_os;
-		var $id_servico;
+		var $numOs;
+		var $idServico;
 		var $profissional;
 		var $dataInicio;
 		var $dataConclusao;
 		var $tempoTotal;
 
-		function getNum_os(){
-			return $this->num_os;
+		function getNumOs(){
+			return $this->numOs;
 		}
-		function setNum_os($num_os){
-			$this->num_os = $num_os;
+		function setNumOs($numOs){
+			$this->numOs = $numOs;
 		}
 
-		function getId_servico(){
-			return $this->id_servico;
+		function getIdServico(){
+			return $this->idServico;
 		}
-		function setId_servico($id_servico){
-			$this->id_servico = $id_servico;
+		function setIdServico($idServico){
+			$this->idServico = $idServico;
 		}
 
 		function getProfissional(){
@@ -54,81 +54,121 @@
 	class OsDAO {
 		function create($os) {
 			$result = array();
-
+			$idSer = $os->getIdServico();
+			$profi = $os->getProfissional();
+			if($os->getDataInicio() != null){
+				$dataI = $os->getDataInicio();
+				$query = "INSERT INTO ordens_de_servico(id_servico, profissional,data_inicio) VALUES";
+				$query .= "($idSer, '$profi', '$dataI')";
+			} else {
+				$query = "INSERT INTO ordens_de_servico(id_servico, profissional,data_inicio) VALUES";
+				$query .= "($idSer, '$profi', curdate())";
+			}
 			try {
-				$query = "INSERT INTO table_name (column1, column2) VALUES (value1, value2)";
-
 				$con = new Connection();
-
 				if(Connection::getInstance()->exec($query) >= 1){
+					$result = $os;
+				}else{
+					$result["err"] = "Não foi possível cadastrar OS";
 				}
-
 				$con = null;
 			}catch(PDOException $e) {
 				$result["err"] = $e->getMessage();
 			}
-
 			return $result;
 		}
 
-		function read() {
+		function read($num) {
 			$result = array();
-
+			if($num != "0"){
+				$query = "SELECT * FROM ordens_de_servico WHERE num_os = $num";
+			} else {
+				$query = "SELECT * FROM ordens_de_servico";
+			}
 			try {
-				$query = "SELECT column1, column2 FROM table_name WHERE condition";
-
 				$con = new Connection();
-
 				$resultSet = Connection::getInstance()->query($query);
-
 				while($row = $resultSet->fetchObject()){
+					$os = new Os();
+					$os->setNumOs($row->num_os);
+					$os->setIdServico($row->id_servico);
+					$os->setProfissional($row->profissional);
+					$os->setDataInicio($row->data_inicio);
+					$os->setDataConclusao($row->data_conclusao);
+					$os->setTempoTotal($row->tempo_total_horas);
+					$result[] = $os;
 				}
-
 				$con = null;
 			}catch(PDOException $e) {
 				$result["err"] = $e->getMessage();
 			}
-
 			return $result;
 		}
 
-		function update() {
+		function update($os) {
 			$result = array();
-
+			$num = $os->getNumOs();
+			$idSer = $os->getIdServico();
+			$profi = $os->getProfissional();
+			$dataI = $os->getDataInicio();
+			$dataC = $os->getDataConclusao();
+			$tempo = $os->getTempoTotal();
+			$query = "UPDATE ordens_de_servico SET id_servico = $idSer, profissional = '$profi', data_inicio = '$dataI', data_conclusao = '$dataC', tempo_total_horas = $tempo WHERE num_os = $num";
 			try {
-				$query = "UPDATE table_name SET column1 = value1, column2 = value2 WHERE condition";
-
 				$con = new Connection();
-
 				$status = Connection::getInstance()->prepare($query);
-
 				if($status->execute()){
+					$result = $os;
+				}else{
+					$result["err"] = "Não foi possível alterar OS";
 				}
-
 				$con = null;
 			}catch(PDOException $e) {
 				$result["err"] = $e->getMessage();
 			}
-
 			return $result;
 		}
 
-		function delete() {
+		function darBaixaOs($os) {
 			$result = array();
-
+			$num = $os->getNumOs();
+			$dataC = $os->getDataConclusao();
+			$tempo = $os->getTempoTotal();
+			if($os->getDataConclusao() != null){
+				$dataC = $os->getDataConclusao();
+				$query = "UPDATE ordens_de_servico SET data_conclusao = '$dataC', tempo_total_horas = $tempo WHERE num_os = $num";
+			}else{
+				$query = "UPDATE ordens_de_servico SET data_conclusao = curdate(), tempo_total_horas = $tempo WHERE num_os = $num";
+			}
 			try {
-				$query = "DELETE FROM table_name WHERE condition";
-
 				$con = new Connection();
-
-				if(Connection::getInstance()->exec($query) >= 1){
+				$status = Connection::getInstance()->prepare($query);
+				if($status->execute()){
+					$result = $os;
+				}else{
+					$result["err"] = "Não foi possível alterar OS";
 				}
-
 				$con = null;
 			}catch(PDOException $e) {
 				$result["err"] = $e->getMessage();
 			}
+			return $result;
+		}
 
+		function delete($num) {
+			$result = array();
+			$query = "DELETE FROM ordens_de_servico WHERE num_os = $num";
+			try {
+				$con = new Connection();
+				if(Connection::getInstance()->exec($query) >= 1){
+					$result["suss"] = "Ordem de serviço num = $num excluída com sucesso";
+				}else{
+					$result["err"] = "Não foi possível excluir esta ordem de serviço.";
+				}
+				$con = null;
+			}catch(PDOException $e) {
+				$result["err"] = $e->getMessage();
+			}
 			return $result;
 		}
 	}

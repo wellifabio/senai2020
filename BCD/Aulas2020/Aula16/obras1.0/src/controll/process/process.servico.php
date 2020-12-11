@@ -4,6 +4,7 @@
 	require("../../domain/Servico.php");
 
 	class ServicoProcess {
+		
 		var $sd;
 
 		function doGet($arr){
@@ -20,7 +21,6 @@
 			http_response_code(200);
 			echo json_encode($sucess);
 		}
-
 
 		function doPost($arr){
 			$sd = new ServicoDAO();
@@ -40,7 +40,6 @@
 			echo json_encode($sucess);
 		}
 
-
 		function doPut($arr){
 			$sd = new ServicoDAO();
 			$servico = new Servico();
@@ -59,7 +58,6 @@
 			}
 			echo json_encode($sucess);
 		}
-
 
 		function doDelete($arr){
 			$sd = new ServicoDAO();

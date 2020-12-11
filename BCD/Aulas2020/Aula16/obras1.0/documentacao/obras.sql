@@ -66,7 +66,7 @@ insert into ordens_de_servico values
 (default, 2,"77788899900",curdate()-1,null,null),
 (default, 2,"33344455566",curdate()-1,null,null),
 (default, 3,"99900011122",curdate(),curdate(),4),
-(default, 3,"11122233344",curdate(),null,4);
+(default, 3,"11122233344",curdate(),null,null);
 select * from servicos;
 select * from profissionais;
 select * from ordens_de_servico;

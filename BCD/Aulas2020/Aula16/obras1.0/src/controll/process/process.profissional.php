@@ -4,6 +4,7 @@
 	require("../../domain/Profissional.php");
 
 	class ProfissionalProcess {
+		
 		var $pd;
 
 		function doGet($arr){
