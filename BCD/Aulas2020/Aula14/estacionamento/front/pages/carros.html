@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Estacionamento</title>
+  
+  <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/css/bootstrap.min.css" integrity="sha384-TX8t27EcRE3e/ihU7zmQxVncDAy5uIKz4rEkgIXeMed4M0jlfIDPvg6uqKI2xXr2" crossorigin="anonymous">
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ho+j7jyWK8fNQe+A12Hb8AhRq26LrZ/JpcUGGOn+Y7RsweNrtN/tE3MoK7ZeZDyx" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.5.3/dist/js/bootstrap.min.js" integrity="sha384-w1Q4orYjBQndcko6MimVbzY0tgp4pWB4lZ7lr30WKz0vr/aWKhXdBNmNb5D92v7s" crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.gstatic.com">
+  <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200;0,300;0,400;0,600;0,700;0,800;0,900;1,200;1,300;1,400;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet"> 
+  <link rel="stylesheet" href="../styles/main.css">
+</head>
+<body onload="listCars()">
+  <div class="container">
+    <div class="d-flex flex-row align-items-center justify-content-around" id="header">
+      <img src="../assets/logo.png" alt="logo" id="logo">
+      <h3>Jaguar Park</h3>
+    </div>
+    <div class="d-flex justify-content-around mt-5" id="body">
+      <div id="menu">
+        <ul>
+          <li><a href="carros.html">Gerenciar Veiculos</a></li>
+          <li><a href="index.html">Veiculos Estacionados</a></li>
+          <!--<li><a href="historico.html">Historico</a></li>-->
+        </ul>
+      </div>
+      <div id="content">
+        <div class="d-flex justify-content-between">
+          <input type="text" onkeyup='buscacarro(this);' class="form-control" id="inpBusca" placeholder="Pesquise o veiculo" />    
+          <button class="btn btn-outline-dark" onclick="cleanModal()" data-toggle="modal" data-target="#modalRegister">Cadastrar</button>
+        </div>
+        <table class="table table-striped mt-3">
+          <thead>
+            <tr1>
+              <th>Placa</th>
+              <th>Marca</th>
+              <th>Modelo</th>
+              <th>Observacoes</th>
+            </tr1>
+          </thead>
+          <tbody id="tbodyCars"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+
+  <div class="modal fade" id="modalRegister" tabindex="-1" role="dialog" aria-labelledby="modalRegister" aria-hidden="true">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">Novo Veiculo</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form>
+            <div class="form-group">
+              <label for="marca">Marca</label>
+              <input type="text" class="form-control" id="marca" placeholder="Fiat">
+            </div>
+            <div class="form-group">
+              <label for="modelo">Modelo</label>
+              <input type="text" class="form-control" id="modelo" placeholder="Uno">
+            </div>
+            <div class="form-group">
+              <label for="placa">Placa</label>
+              <input type="text" class="form-control" id="placa" placeholder="ABC-1234">
+            </div>
+            <div class="form-group">
+              <label for="obs">Observacoes</label>
+              <input type="text" class="form-control" id="obs" placeholder="Risco na lateral">
+            </div>
+            <input type="hidden" id="type">
+            <input type="hidden" id="placaantiga">
+          </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" data-dismiss="modal" id="buttonDelete" class="btn btn-danger" onclick="sendData(this)">Excluir</button>
+          <button type="button" data-dismiss="modal" id="buttonModal" class="btn btn-dark" onclick="sendData(this)">Salvar</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+
+<script src="../scripts/carros.js"></script>
+
+</html>
