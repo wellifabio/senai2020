@@ -1,6 +1,6 @@
 const xhr = new XMLHttpRequest();
 
-const urlBase = "http://localhost/senai/2des2020/estacionamento/api/src/controll/routes/";
+const urlBase = "../../src/controll/routes/";
 
 const tbodyCars = document.getElementById("tbodyCars");
 
