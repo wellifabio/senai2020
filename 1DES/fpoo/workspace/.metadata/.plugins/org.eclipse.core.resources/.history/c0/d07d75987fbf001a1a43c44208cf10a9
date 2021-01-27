@@ -1,0 +1,39 @@
+package views;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JDialog;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+
+public class LoginForm extends JDialog implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	private JPanel panel = new JPanel();
+	private JLabel lbNome = new JLabel("Nome");
+	private JLabel lbSenha = new JLabel("Senha"); 
+	private JLabel lbEsqueci = new JLabel("Esqueci a senha");
+	
+	LoginForm(){
+		setTitle("Bem vindo.");
+		setBounds(500,100,400,500);
+		setContentPane(panel);
+		setLayout(null);
+		
+		lbNome.setBounds(20,100,100, 30);
+		lbSenha.setBounds(20,200,100, 30);
+		lbEsqueci.setBounds(20,300,100, 30);
+		
+		panel.add(lbNome);
+		panel.add(lbSenha);
+		panel.add(lbEsqueci);
+		
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+	
+}

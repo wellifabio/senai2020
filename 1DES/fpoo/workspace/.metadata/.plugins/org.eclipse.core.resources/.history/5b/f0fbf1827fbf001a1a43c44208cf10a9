@@ -1,0 +1,23 @@
+package views;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JDialog;
+
+public class LoginForm extends JDialog implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+	
+	LoginForm(){
+		setTitle("Bem vindo.");
+		setBounds(500,100,400,500);
+		setLayout(null);
+	}
+
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		
+	}
+	
+}

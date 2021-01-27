@@ -1,0 +1,23 @@
+Exibir a régua.
+Digitar o texto sem se preocupar com formatação
+Preocupando-se apenas com ortografia e gramática.
+Ao terminar o texto, formatar
+Parágrafo especial na primeira linha 1,25
+Espaçamento entre linhas 1,5
+Fonte(Arial ou Times New Roman, tamanho 12).
+Títulos tamanho máximo 18
+O título pode ser centralizado.
+O texto deve estar Justificado e com Hifenização.
+Margens
+Superior e Esquerda 3cm
+Inferior e Direita 2cm
+Alinhamentos
+
+
+Currículo
+Não precisa de foto, só se pedirem
+Destaque para o objetivo, formação e experiência.
+Não assinar.
+Sóbrio.
+
+

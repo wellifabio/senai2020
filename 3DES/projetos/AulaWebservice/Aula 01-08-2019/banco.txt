@@ -1,0 +1,7 @@
+CREATE DATABASE meuserver;
+USE meuserver;
+CREATE TABLE aluno(
+	nome varchar(150) not null,
+	ra integer not null
+);
+INSERT INTO aluno (nome, ra) VALUES ("Fulano", 123);

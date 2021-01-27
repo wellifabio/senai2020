@@ -1,0 +1,9 @@
+Americana;72;Jaguariúna;60
+Jaguariúna;122;Pirassununga;120
+Pirassununga;210;São Paulo;110
+PosoAlegre;120;Jaguariúna;280
+Americana;72;Jaguariúna;60
+Jaguariúna;122;Pirassununga;120
+Pirassununga;210;São Paulo;110
+PosoAlegre;120;Jaguariúna;280
+Americana;72;Jaguariúna;60

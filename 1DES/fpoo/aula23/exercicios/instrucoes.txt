@@ -1,0 +1,34 @@
+Desafio 1
+A partir das entradas do arquivo "entrada1.txt"
+Faça um programa que calcule as médias e gere um arquivo de saía no modelo abaixo:
+Ana media 5
+Bruna media 9
+Marcos media 5
+Juliano media 4
+
+Desafio 2
+A partir das entradas do arquivo "entrada2.txt"
+Faça um programa que calcule o tempo de viagem entre
+as cidades de origem e destino.
+Saída seja e um aquivo chamado "saida.txt"
+Exemplo
+Origem: Americana Destino: Jaguariúna tempo ???
+Origem: Jaguariúna Destino: Pirassununga tempo ???
+Origem: Pirassununga Destino: São Paulo tempo ???
+Origem: PosoAlegre Destino: Jaguariúna tempo ???
+
+Desafio 3
+De acordo com o arquivo "entrada3.txt"
+Temos uma tabela, separada por TAB com os dados da Pandemia
+País, Confirmados, Recuperados e Mortes
+Crie um programa que leia estas entradas do arquivo e as mostre
+em forma de porcentagem comparando cada país.
+Exemplo de saída:
+Estados Unidos	72%	??%	??%
+Brasil	2%	??%	??%
+Rússia	17%	??%	??%
+Espanha	9%	??%	??%
+
+
+
+

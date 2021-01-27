@@ -1,0 +1,20 @@
+A partir de um Projeto MODELO.
+Documentação técnica (DCU, Classes, MER DER)
+Banco de dados (MySQL)
+Inciar o Backand JSP - API
+
+Aplicação WEB
+Prestadores de serviço (Funerárias, Floricultura, Comercializam Cova, Artesãos de túmulos, e outros)
+Anúnciar seus serviços ou produtos.
+Montar uma tabela de serviços e produtos (Limpeza de túmulo, Placas de metal, Coroa de flores)
+Comprar produtos ou contratar serviços
+
+Aplicativo.
+Comprar produtos ou contratar serviços
+QR Code no túmulo, através do aplicativo obter informações. 
+
+Aplicação WEB
+Atores Clientes Finais e o Prestadores de serviços, Administradores
+Clientes Finais -> Acessao o Site -> Cadastrar-se -> Fazer login -> Comprar um Produto ou um Serviço
+Prestadores de Serviço -> Acessao o Site -> Cadastrar-se -> Fazer login -> Criar um anúncio
+Administrador -> Acessao o Site ->  Fazer login -> Verificar as atividades (Compras, Novos Cadastros)

@@ -1,0 +1,46 @@
+drop database if exists penacova;
+create database penacova;
+use penacova;
+create table usuarios(
+	email varchar(70) not null primary key,
+	nome varchar(60) not null,
+	celular varchar(20) not null,
+	senha varchar(50) not null,
+	cidade varchar(50) not null,
+	tipo varchar(20) not null,
+	status varchar(12) not null,
+	data Date not null
+);
+create table anuncios(
+	cod_anuncio integer not null primary key auto_increment,
+	email  varchar(70) not null,
+	titulo varchar(35) not null,
+	descricao varchar(500) not null,
+	imagem varchar(70) not null,
+	link varchar(70) not null,
+	status varchar(10) not null,
+	data Date not null,
+	constraint fk_anuncio_usuario foreign key (email) references usuarios(email) on delete cascade
+);
+create table produtos(
+	cod_produto integer not null primary key auto_increment,
+	nome varchar(35) not null,
+	descricao varchar(500) not null,
+	imagem varchar(70) not null,
+	preco decimal(6,2),
+	tipo varchar(10) not null,
+	status varchar(10) not null,
+	data Date not null
+);
+create table pedidos(
+	cod_pedido integer not null primary key auto_increment,
+	cod_produto integer not null,
+	email varchar(70) not null,
+	valor_inicial decimal(6,2) not null,
+	valor_final decimal(6,2),
+	data_inicial Date not null,
+	data_final Date,
+	status varchar(10) not null,
+	constraint fk_pedido_produto foreign key (cod_produto) references produtos(cod_produto) on update cascade,
+	constraint fk_pedido_usuario foreign key (email) references usuarios(email) on update cascade
+);

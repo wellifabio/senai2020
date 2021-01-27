@@ -1,0 +1,26 @@
+package views;
+
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import javax.swing.JFrame;
+
+public class MainForm extends JFrame implements ActionListener{
+
+	private static final long serialVersionUID = 1L;
+
+	MainForm(){
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	}
+	
+	@Override
+	public void actionPerformed(ActionEvent e) {
+
+	}
+	
+	public static void main(String[] args) {
+		LoginForm lf = new LoginForm();
+		lf.setVisible(true);
+	}
+
+}

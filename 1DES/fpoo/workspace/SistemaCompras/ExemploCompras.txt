@@ -1,0 +1,273 @@
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+1
+Digite os dados abaixo:
+Id Nome Descrição Preço Quantidade
+1 Sabonete Lux 3,45 10
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+1
+Digite os dados abaixo:
+Id Nome Descrição Preço Quantidade
+2 Detergente Ype 2,99 30
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+1
+Digite os dados abaixo:
+Id Nome Descrição Preço Quantidade
+3 Sabão	Ype 0,99 20
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+1
+Digite os dados abaixo:
+Id Nome Descrição Preço Quantidade
+4 Amaciante Ype 2,89 10
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+2
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	Sabão	Ype	0.99	20
+4	Amaciante	Ype	2.89	10
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+4
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	Sabão	Ype	0.99	20
+4	Amaciante	Ype	2.89	10
+Digite o id do produto a ser excluído:
+8
+Id não encontrado
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+4
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	Sabão	Ype	0.99	20
+4	Amaciante	Ype	2.89	10
+Digite o id do produto a ser excluído:
+4
+Removido com sucesso
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+2
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	Sabão	Ype	0.99	20
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+3
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	Sabão	Ype	0.99	20
+Digite o id do produto a ser alterado:
+3
+Digite os dados abaixo:
+Id Nome Descrição Preço Quantidade
+3 SabãoEmPó Ype 0,99 20
+Alterado com sucesso
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+2
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	SabãoEmPó	Ype	0.99	20
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+2
+
+1.Registrar compra
+2.Listar Compras
+
+1
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	SabãoEmPó	Ype	0.99	20
+Digite o id do produto:
+5
+Id não encontrado
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+2
+
+1.Registrar compra
+2.Listar Compras
+
+1
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	SabãoEmPó	Ype	0.99	20
+Digite o id do produto:
+3
+Compra registrada com sucesso
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+2
+
+1.Registrar compra
+2.Listar Compras
+
+1
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	10
+2	Detergente	Ype	2.99	30
+3	SabãoEmPó	Ype	0.99	19
+Digite o id do produto:
+1
+Compra registrada com sucesso
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+1
+
+1.Cadastro
+2.Consulta
+3.Alteração
+4.Exclusão
+
+2
+Id	Nome	Descrição	Preço	Quantidade
+1	Sabonete	Lux	3.45	9
+2	Detergente	Ype	2.99	30
+3	SabãoEmPó	Ype	0.99	19
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+2
+
+1.Registrar compra
+2.Listar Compras
+
+2
+Id	Data	Hora	Produto	Preco
+1	08/06/2020	01:17	SabãoEmPó	0.99
+2	08/06/2020	01:18	Sabonete	3.45
+
+1.Cadastro Produtos
+2.Cadastro de Compras
+3.Sair
+
+3
+Adeus.

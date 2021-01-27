@@ -1,0 +1,11 @@
+1592828064489	Rename type 'ProdutoCRUD'
+1592828221400	Delete element
+1592828239593	Rename type 'ProcessaProdutos'
+1592832423371	Copy package
+1592832427721	Delete element
+1593178145430	Rename type 'ProcessaTudo'
+1593178393429	Rename method 'start'
+1593178419069	Rename method 'save'
+1593178981147	Rename field 'tp'
+1593179390828	Encapsulate field 'compras'
+1593179428511	Copy compilation unit

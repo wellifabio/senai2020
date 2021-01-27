@@ -1,0 +1,10 @@
+
+1 - Gere e imprima uma matriz de 3 x 3 com valores aleatórios de 0 a 9. Após determine o maior número e informe a sua posição.
+
+2 - Gere e imprima uma matriz de 5 x 5 com valores de 0 a 25, Após informe qual o maior e o menor valor da linha 4 e o maior e menor valor da linha 3.
+
+3 - Preencha uma matriz de 5 x 5 com valores de 0 a 50. Depois exiba os números pares e ímpares na matriz e suas quantidades.
+
+4 - Crie e preencha uma matriz de 4 x 4 com valores de 0 a 50. exiba todos os valores de sua diagonal.
+
+5 - Crie e preencha duas matrizes de 5 x 5 com valores de 0 a 50. Exiba o resultado entre a soma e a subtração entre elas.

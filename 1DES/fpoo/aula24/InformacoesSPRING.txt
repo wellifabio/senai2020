@@ -1,0 +1,54 @@
+FrameWork Spring REST
+Para desenvolvimento de API (webservice)
+
+O Lombok é um framework para Java que permite escrever código eliminando a verbosidade. Seu uso permite gerar em tempo de compilação os métodos getters e setters, métodos construtores, padrão builder e muito mais.
+
+Links importantes
+Status de erros HTTP
+https://www.iana.org/assignments/http-status-codes/http-status-codes.xhtml
+https://httpstatuses.com/
+MySQL Documentação
+https://dev.mysql.com/doc/connector-j/8.0/en/connector-j-reference.html
+Schemas como são chamados bancos de dados.
+FlyWay <- Ferramenta que ajuda a gerenciar versões do Banco de Dados (Versionamento).
+flywaydb.org
+Em src/main/resources
+criamos a estrutura de pastas db/migration
+dentro dela os arquivos nomeados da seguinte forma
+VNUMERO__descricao
+Exemplo
+V001__cria-tabela-cliente
+Qualquer alteração seguira este padrão
+Arquivos fora deste padrão não são executados pelo FlyWay
+
+jakarta.ee
+Jakarta é outro framework que pode ser utilizado em conjunto com Spring
+Jakarta Persistence - É um projeto conhecido JPA
+Para fazer o controle do banco de dados através de classes Java.
+Hibernate ou hibernate-core é uma implementação do Jakarta Persistence
+
+Comparação de objetos
+https://blog.algaworks.com/entendendo-o-equals-e-hashcode/
+Para que as listas de objetos sejam melhor manipuladas e métodos
+como .contains() funcionem corretamente.
+
+Caso queiramos ver as queries SQL geradas pelo JPA adicionamos esta linha
+em application.proprieties
+spring.jpa.show-sql=true
+
+Para estes controles de acesso a dados
+Criamos uma interface em um pacote de repositórios
+Ex: domain.repository
+ClienteRepository semelhante ao tradicional ClienteDAO
+Ao criar a interface e Herdar JpaRepository<Cliente, Long>
+
+Os códigos que estavam no ClienteController não são mais necessários São removidos.
+Ai é só implementar o CRUD básico.
+
+EM seguida Importar a dependência hibernate-validation 
+Para fazer algumas validações caso algum campo esteja null
+Pacote do Bean Validation
+Estas implementações se iniciam no Model
+Em seguida @Valid no Controller
+
+

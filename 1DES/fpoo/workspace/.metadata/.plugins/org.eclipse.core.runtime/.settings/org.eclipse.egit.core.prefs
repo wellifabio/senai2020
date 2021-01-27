@@ -1,0 +1,7 @@
+GitRepositoriesView.GitDirectories=E\:\\eclipse\\git\\eclipse\\.git;
+GitRepositoriesView.GitDirectories.relative=E\:\\eclipse\\git\\eclipse\\.git;
+RepositorySearchDialogDeepSearch=true
+RepositorySearchDialogSearchPath=E\:\\eclipse\\git
+core_defaultRepositoryDir=E\:\\eclipse\\git
+core_preferredMergeStrategy=jgit-default-mergeStrategy
+eclipse.preferences.version=1

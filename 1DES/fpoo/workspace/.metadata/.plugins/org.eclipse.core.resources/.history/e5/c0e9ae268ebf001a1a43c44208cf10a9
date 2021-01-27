@@ -1,0 +1,11 @@
+package controllers;
+
+import java.util.ArrayList;
+
+import model.Usuario;
+
+public class ProcessaUsuarios {
+
+	private static ArrayList<Usuario> usuarios = new ArrayList<>();
+
+}
