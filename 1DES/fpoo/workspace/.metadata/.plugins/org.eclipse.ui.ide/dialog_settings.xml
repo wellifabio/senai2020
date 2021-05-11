@@ -14,6 +14,7 @@
 		<item key="SmartImportRootWizardPage.STORE_NESTED_PROJECTS" value="true"/>
 		<item key="SmartImportRootWizardPage.STORE_CONFIGURE_NATURES" value="true"/>
 		<list key="org.eclipse.ui.internal.wizards.datatransfer.SmartImportRootWizardPage.knownSources">
+			<item value="D:\wellington\senai2020\1DES\fpoo\workspace\ProjetoHortelino"/>
 			<item value="D:\ARQUIVOS\SENAI\Planos_Ensino\2020_1_Semestre\2020_1DES\FPOO\workspace\Login"/>
 			<item value="D:\ARQUIVOS\SENAI\Planos_Ensino\2020_1_Semestre\2020_1DES\FPOO\workspace\ProjetoHortelino"/>
 			<item value="D:\ARQUIVOS\SENAI\Planos_Ensino\2020_1_Semestre\2020_1DES\FPOO\workspace\SistemaCompras"/>
