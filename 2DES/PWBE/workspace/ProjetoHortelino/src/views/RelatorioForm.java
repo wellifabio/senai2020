@@ -84,5 +84,4 @@ public class RelatorioForm extends JDialog implements ActionListener {
 			dispose();
 		}
 	}
-
 }
