@@ -21,8 +21,8 @@ public class ProdutoDAO {
 	private BufferedReader br;
 	private BufferedWriter bw;
 	private BufferedImage bi;
-	private String arquivo = "D:\\ARQUIVOS\\SENAI\\Planos_Ensino\\2020_2_Semestre\\PWBE\\workspace\\ProjetoHortelinoWeb\\bd\\produtos.csv";
-	private String caminhoImg = "D:\\ARQUIVOS\\SENAI\\Planos_Ensino\\2020_2_Semestre\\PWBE\\workspace\\ProjetoHortelinoWeb\\img\\";
+	private String arquivo = System.getProperty("user.dir")+"\\bd\\produtos.csv";
+	private String caminhoImg = System.getProperty("user.dir")+"\\img\\";
 	private String[] campos;
 
 	public boolean save(ArrayList<Produto> produtos) {

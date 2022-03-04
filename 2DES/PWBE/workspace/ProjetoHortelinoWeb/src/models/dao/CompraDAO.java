@@ -16,7 +16,7 @@ public class CompraDAO {
 	private Compra compra;
 	private BufferedReader br;
 	private BufferedWriter bw;
-	private String arquivo = "D:\\ARQUIVOS\\SENAI\\Planos_Ensino\\2020_2_Semestre\\PWBE\\workspace\\ProjetoHortelinoWeb\\bd\\compras.csv";
+	private String arquivo = System.getProperty("user.dir")+"\bd\\compras.csv";
 	private String[] campos;
 	
 	//Salva os dados de uma lista no arquivo
